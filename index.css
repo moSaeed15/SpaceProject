@@ -703,6 +703,10 @@ body {
       '. content image .'
       '. tabs image .';
   }
+  .grid-container--crew .numbered-title {
+    justify-self: start;
+    margin: 0;
+  }
   .grid-container--crew > .dot-indicators {
     justify-self: start;
   }
@@ -711,6 +715,9 @@ body {
     align-self: end;
     max-width: 90%;
     margin-top: -6rem;
+  }
+  .crew-details {
+    justify-self: start;
   }
   .crew-details > p {
     color: var(--clr-light);
@@ -802,13 +809,14 @@ body {
   .grid-container--technology {
     --flow-space: 2rem;
     grid-template-columns: 1fr minmax(0, 37rem) minmax(0, 23rem) 1fr;
-    /* gap: var(--container-gap, 0rem); */
+    gap: var(--container-gap, 0rem);
     grid-template-areas:
-      'title title title .'
+      'title title title.'
       'numbers content image .'
       'numbers content image .';
   }
   .grid-container--technology > .number-indicators {
+    margin-left: 0.5rem;
     gap: var(--gap, 0rem);
     flex-direction: column;
     justify-self: end;
@@ -819,8 +827,6 @@ body {
   }
   .grid-container--technology .numbered-title {
     justify-self: start;
-    margin: 3rem 0;
-    margin-left: 8rem;
   }
   .grid-container--technology > picture {
     justify-self: end;
@@ -830,7 +836,7 @@ body {
   }
   .technology-paragraph {
     color: hsl(var(--clr-light));
-    max-width: 43.7ch;
+    max-width: clamp(40ch, 15vw, 50ch);
     margin-top: 1rem;
     line-height: 2.1rem;
   }
