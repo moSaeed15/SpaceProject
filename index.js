@@ -195,6 +195,7 @@ const renderTechonology = function (data, number) {
 // Event listeners
 if (crewParentElement)
   crewParentElement.addEventListener('click', function (e) {
+    e.preventDefault();
     const link = e.target.closest('.switch-page');
 
     if (!link) return;
@@ -206,6 +207,7 @@ if (crewParentElement)
 
 if (destinationParentElement)
   destinationParentElement.addEventListener('click', function (e) {
+    e.preventDefault();
     const link = e.target.closest('.switch-page');
 
     if (!link) return;
@@ -216,6 +218,7 @@ if (destinationParentElement)
 
 if (technologyParentElement)
   technologyParentElement.addEventListener('click', function (e) {
+    e.preventDefault();
     const link = e.target.closest('.switch-page');
     if (!link) return;
 
