@@ -717,6 +717,7 @@ body {
   }
 }
 
+/* Technology */
 .grid-container--technology {
   --flow-space: 2rem;
   grid-template-areas:
@@ -736,6 +737,7 @@ body {
 
 .grid-container--technology > .number-indicators {
   grid-area: numbers;
+  align-self: center;
 }
 
 .grid-container--technology > .technology-details {

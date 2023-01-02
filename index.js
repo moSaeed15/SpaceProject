@@ -1,14 +1,20 @@
 import data from './data.json' assert { type: 'json' };
-
+const html = document.querySelector('html');
 const menuButton = document.querySelector('.mobile-nav-toggle');
 const nav = document.querySelector('.primary-navigation');
-const crewParentElement = document.querySelector('.crew');
-const destinationParentElement = document.querySelector('.destination');
-const technologyParentElement = document.querySelector('.technology');
+const crewParentElement = document.querySelector('.grid-container--crew');
+const destinationParentElement = document.querySelector(
+  '.grid-container--destination'
+);
+const technologyParentElement = document.querySelector(
+  '.grid-container--technology'
+);
 
-menuButton.addEventListener('click', () => {
+// const toggleMenu = function () {};
+
+menuButton.addEventListener('click', e => {
   const visiblity = nav.getAttribute('data-visible');
-
+  console.log('clicked');
   if (visiblity === 'false') {
     nav.setAttribute('data-visible', true);
     menuButton.setAttribute('aria-expanded', true);
@@ -23,57 +29,8 @@ const renderCrew = function (data, number) {
   crewParentElement.innerHTML = '';
   const clickedPageData = data[number];
 
-  const markup = `<a class="skip-to-content" href="#main">Skip to content</a>
-  <header class="primary-header flex">
-    <div>
-      <img
-        src="./assets/shared/logo.svg"
-        alt="space tourism logo"
-        class="logo"
-      />
-    </div>
-    <button class="mobile-nav-toggle" aria-controls="primary-navigation">
-      <span class="sr-only" aria-expanded="false">Menu</span>
-    </button>
-    <nav>
-      <ul
-        id="primary-navigation"
-        data-visible="false"
-        class="primary-navigation underline-indicators flex"
-      >
-        <li>
-          <a
-            class="ff-sans-cond uppercase text-white letter-spacing-2"
-            href="index.html"
-            ><span aria-hidden="true">00</span>Home</a
-          >
-        </li>
-        <li>
-          <a
-            class="ff-sans-cond uppercase text-white letter-spacing-2"
-            href="destination-moon.html"
-            ><span aria-hidden="true">01</span>Destination</a
-          >
-        </li>
-        <li class="active">
-          <a
-            class="ff-sans-cond uppercase text-white letter-spacing-2"
-            href="crew-commander.html"
-            ><span aria-hidden="true">02</span>Crew</a
-          >
-        </li>
-        <li>
-          <a
-            class="ff-sans-cond uppercase text-white letter-spacing-2"
-            href="technology-vehicle.html"
-            ><span aria-hidden="true">03</span>Technology</a
-          >
-        </li>
-      </ul>
-    </nav>
-  </header>
-
-  <main id="main" class="flow grid-container grid-container--crew">
+  const markup = `
+  
     <h1 class="numbered-title">
       <span aria-hidden="true">02</span> Meet your crew
     </h1>
@@ -115,7 +72,7 @@ const renderCrew = function (data, number) {
       />
       <img src="${clickedPageData.images.png}" alt="${clickedPageData.name}" />
     </picture>
-  </main>`;
+`;
   crewParentElement.insertAdjacentHTML('afterbegin', markup);
 };
 
@@ -124,57 +81,7 @@ const renderDesitnation = function (data, number) {
   const clickedPageData = data[number];
   console.log(clickedPageData);
   const markup = `
-  <a class="skip-to-content" href="#main">Skip to content</a>
-  <header class="primary-header flex">
-    <div>
-      <img
-        src="./assets/shared/logo.svg"
-        alt="space tourism logo"
-        class="logo"
-      />
-    </div>
-    <button class="mobile-nav-toggle" aria-controls="primary-navigation">
-      <span class="sr-only" aria-expanded="false">Menu</span>
-    </button>
-    <nav>
-      <ul
-        id="primary-navigation"
-        data-visible="false"
-        class="primary-navigation underline-indicators flex"
-      >
-        <li>
-          <a
-            class="ff-sans-cond uppercase text-white letter-spacing-2"
-            href="index.html"
-            ><span aria-hidden="true">00</span>Home</a
-          >
-        </li>
-        <li class="active">
-          <a
-            class="ff-sans-cond uppercase text-white letter-spacing-2"
-            href="destination-moon.html"
-            ><span aria-hidden="true">01</span>Destination</a
-          >
-        </li>
-        <li>
-          <a
-            class="ff-sans-cond uppercase text-white letter-spacing-2"
-            href="crew-commander.html"
-            ><span aria-hidden="true">02</span>Crew</a
-          >
-        </li>
-        <li>
-          <a
-            class="ff-sans-cond uppercase text-white letter-spacing-2"
-            href="technology-vehicle.html"
-            ><span aria-hidden="true">03</span>Technology</a
-          >
-        </li>
-      </ul>
-    </nav>
-  </header>
 
-  <main id="main" class="flow grid-container grid-container--destination">
     <h1 class="numbered-title">
       <span aria-hidden="true">01</span> Pick your destination
     </h1>
@@ -234,7 +141,7 @@ const renderDesitnation = function (data, number) {
         </div>
       </div>
     </article>
-  </main>`;
+`;
 
   destinationParentElement.insertAdjacentHTML('afterbegin', markup);
 };
@@ -244,94 +151,44 @@ const renderTechonology = function (data, number) {
   const clickedPageData = data[number];
 
   const markup = `
-  <a class="skip-to-content" href="#main"> Skip to content</a>
-  <header class="primary-header flex">
-    <div>
-      <img
-        src="./assets/shared/logo.svg"
-        alt="space tourism logo"
-        class="logo"
-      />
-    </div>
-    <button class="mobile-nav-toggle" aria-controls="primary-navigation">
-      <span class="sr-only" aria-expanded="false">Menu</span>
+
+  <h1 class="numbered-title">
+    <span aria-hidden="true">03 </span> Space launch 101
+  </h1>
+  <picture>
+    <source
+      media="(min-width:45em)"
+      srcset="${clickedPageData.images.portrait}"
+    />
+
+    <img
+      src="${clickedPageData.images.landscape}"
+      alt="${clickedPageData.name}"
+    />
+  </picture>
+  <div class="number-indicators flex">
+    <button data-number="0" class="switch-page" aria-selected="true">
+      1
     </button>
-    <nav>
-      <ul
-        id="primary-navigation"
-        data-visible="false"
-        class="primary-navigation underline-indicators flex"
-      >
-        <li>
-          <a
-            class="ff-sans-cond uppercase text-white letter-spacing-2"
-            href="index.html"
-            ><span aria-hidden="true">00</span>Home</a
-          >
-        </li>
-        <li>
-          <a
-            class="ff-sans-cond uppercase text-white letter-spacing-2"
-            href="destination-moon.html"
-            ><span aria-hidden="true">01</span>Destination</a
-          >
-        </li>
-        <li>
-          <a
-            class="ff-sans-cond uppercase text-white letter-spacing-2"
-            href="crew-commander.html"
-            ><span aria-hidden="true">02</span>Crew</a
-          >
-        </li>
-        <li class="active">
-          <a
-            class="ff-sans-cond uppercase text-white letter-spacing-2"
-            href="technology-vehicle.html"
-            ><span aria-hidden="true">03</span>Technology</a
-          >
-        </li>
-      </ul>
-    </nav>
-  </header>
-
-  <main id="main" class="grid-container grid-container--technology">
-    <h1 class="numbered-title">
-      <span aria-hidden="true">03 </span> Space launch 101
-    </h1>
-    <picture>
-      <source
-        media="(min-width:45em)"
-        srcset="${clickedPageData.images.portrait}"
-      />
-
-      <img
-        src="${clickedPageData.images.landscape}"
-        alt="Launch vehicle"
-      />
-    </picture>
-    <div class="number-indicators flex">
-      <button data-number="0" class='switch-page' aria-selected="${
-        number == '0' ? 'true' : 'false'
-      }">1</button>
-      <button data-number="1" class='switch-page' aria-selected="${
-        number == '1' ? 'true' : 'false'
-      }">2</button>
-      <button data-number="2" class='switch-page' aria-selected="${
-        number == '2' ? 'true' : 'false'
-      }">3</button>
-    </div>
-    <article class="flow technology-details">
-      <header class="flow flow--space-small">
-        <h2 class="ff-sans-cond uppercase letter-spacing-2">
-          The terminology...
-        </h2>
-        <p class="fs-700 uppercase ff-serif">${clickedPageData.name}</p>
-      </header>
-      <p class="technology-paragraph">
-      ${clickedPageData.description}
-      </p>
-    </article>
-  </main>`;
+    <button data-number="1" class="switch-page" aria-selected="false">
+      2
+    </button>
+    <button data-number="2" class="switch-page" aria-selected="false">
+      3
+    </button>
+  </div>
+  <article class="flow technology-details">
+    <header class="flow flow--space-small">
+      <h2 class="ff-sans-cond uppercase letter-spacing-2">
+        The terminology...
+      </h2>
+      <p class="fs-700 uppercase ff-serif">${clickedPageData.name}</p>
+    </header>
+    <p class="technology-paragraph">
+    ${clickedPageData.description}
+    </p>
+  </article>
+`;
   technologyParentElement.insertAdjacentHTML('afterbegin', markup);
 };
 
@@ -350,7 +207,7 @@ if (crewParentElement)
 if (destinationParentElement)
   destinationParentElement.addEventListener('click', function (e) {
     const link = e.target.closest('.switch-page');
-    console.log(link);
+
     if (!link) return;
 
     const tabNumber = link.dataset.tabNumber;
