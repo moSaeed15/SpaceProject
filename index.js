@@ -77,23 +77,23 @@ const renderCrew = function (data, number) {
     <h1 class="numbered-title">
       <span aria-hidden="true">02</span> Meet your crew
     </h1>
-    <div class="dot-indicators flex">
-      <button data-dot-number="0" aria-selected="${
+    <div class="dot-indicators flex ">
+      <button data-dot-number="0" class="switch-page" aria-selected="${
         number == '0' ? 'true' : 'false'
       }">
         <span class="sr-only">The commander</span>
       </button>
-      <button data-dot-number="1" aria-selected="${
+      <button data-dot-number="1" class="switch-page" aria-selected="${
         number == '1' ? 'true' : 'false'
       }">
         <span class="sr-only">The mission specialist</span>
       </button>
-      <button data-dot-number="2" aria-selected="${
+      <button data-dot-number="2" class="switch-page" aria-selected="${
         number == '2' ? 'true' : 'false'
       }">
         <span class="sr-only">The pilot</span>
       </button>
-      <button aria-selected="${
+      <button class="switch-page" aria-selected="${
         number == '3' ? 'true' : 'false'
       }" data-dot-number="3">
         <span class="sr-only">The engineer</span>
@@ -189,28 +189,28 @@ const renderDesitnation = function (data, number) {
       <button
         data-tab-number="0"
         aria-selected="${number == '0' ? 'true' : 'false'}"
-        class="uppercase ff-sans-cond text-accent letter-spacing-2"
+        class="uppercase ff-sans-cond text-accent switch-page letter-spacing-2"
       >
         Moon
       </button>
       <button     
         data-tab-number="1"
         aria-selected="${number == '1' ? 'true' : 'false'}"
-        class="uppercase ff-sans-cond text-accent letter-spacing-2"
+        class="uppercase switch-page ff-sans-cond text-accent letter-spacing-2"
       >
         Mars
       </button>
       <button
         data-tab-number="2"
         aria-selected="${number == '2' ? 'true' : 'false'}"
-        class="uppercase ff-sans-cond text-accent letter-spacing-2"
+        class="uppercase ff-sans-cond switch-page text-accent letter-spacing-2"
       >
         Europa
       </button>
       <button
         data-tab-number="3"
         aria-selected="${number == '3' ? 'true' : 'false'}"
-        class="uppercase ff-sans-cond text-accent letter-spacing-2"
+        class="uppercase ff-sans-cond switch-page text-accent letter-spacing-2"
       >
         Titan
       </button>
@@ -310,13 +310,13 @@ const renderTechonology = function (data, number) {
       />
     </picture>
     <div class="number-indicators flex">
-      <button data-number="0" aria-selected="${
+      <button data-number="0" class='switch-page' aria-selected="${
         number == '0' ? 'true' : 'false'
       }">1</button>
-      <button data-number="1" aria-selected="${
+      <button data-number="1" class='switch-page' aria-selected="${
         number == '1' ? 'true' : 'false'
       }">2</button>
-      <button data-number="2" aria-selected="${
+      <button data-number="2" class='switch-page' aria-selected="${
         number == '2' ? 'true' : 'false'
       }">3</button>
     </div>
@@ -338,7 +338,7 @@ const renderTechonology = function (data, number) {
 // Event listeners
 if (crewParentElement)
   crewParentElement.addEventListener('click', function (e) {
-    const link = e.target.closest('button');
+    const link = e.target.closest('.switch-page');
 
     if (!link) return;
 
@@ -349,8 +349,8 @@ if (crewParentElement)
 
 if (destinationParentElement)
   destinationParentElement.addEventListener('click', function (e) {
-    const link = e.target.closest('button');
-
+    const link = e.target.closest('.switch-page');
+    console.log(link);
     if (!link) return;
 
     const tabNumber = link.dataset.tabNumber;
@@ -359,7 +359,7 @@ if (destinationParentElement)
 
 if (technologyParentElement)
   technologyParentElement.addEventListener('click', function (e) {
-    const link = e.target.closest('button');
+    const link = e.target.closest('.switch-page');
     if (!link) return;
 
     const NumberPage = link.dataset.number;
@@ -369,7 +369,7 @@ if (technologyParentElement)
 // Tab keyboard navigation
 if (destinationParentElement)
   destinationParentElement.addEventListener('keydown', e => {
-    const link = e.target.closest('button');
+    const link = e.target.closest('.switch-page');
     console.log('first');
     if (!link) return;
     console.log(link);
@@ -394,7 +394,7 @@ if (destinationParentElement)
 
 if (crewParentElement)
   crewParentElement.addEventListener('keydown', e => {
-    const link = e.target.closest('button');
+    const link = e.target.closest('.switch-page');
 
     if (!link) return;
     link.focus();
