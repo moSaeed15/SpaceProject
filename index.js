@@ -167,13 +167,19 @@ const renderTechonology = function (data, number) {
     />
   </picture>
   <div class="number-indicators flex">
-    <button data-number="0" class="switch-page" aria-selected="true">
+    <button data-number="0" class="switch-page" aria-selected="${
+      number == '0' ? 'true' : 'false'
+    }">
       1
     </button>
-    <button data-number="1" class="switch-page" aria-selected="false">
+    <button data-number="1" class="switch-page" aria-selected="${
+      number == '1' ? 'true' : 'false'
+    }">
       2
     </button>
-    <button data-number="2" class="switch-page" aria-selected="false">
+    <button data-number="2" class="switch-page" aria-selected="${
+      number == '2' ? 'true' : 'false'
+    }">
       3
     </button>
   </div>
