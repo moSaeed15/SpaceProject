@@ -1,0 +1,13 @@
+{
+  "folders": [
+	{
+		"path": ".."
+	},
+	{
+		"path": "../../programming/complete-javascript-course-master/18-forkify/final/.git"
+	}
+],
+  "settings": {
+    "liveServer.settings.multiRootWorkspaceName": "space-tourism-website-main"
+  }
+}
