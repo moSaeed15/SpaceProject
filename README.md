@@ -34,7 +34,6 @@ Users should be able to:
 ### Video
 
 
-https://user-images.githubusercontent.com/67608414/210362322-ee74c5a2-0cda-4184-9d46-7e3b2904e690.mp4
 
 
 ### Links
